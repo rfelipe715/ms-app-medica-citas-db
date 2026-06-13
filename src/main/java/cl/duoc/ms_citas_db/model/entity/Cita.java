@@ -1,5 +1,6 @@
 package cl.duoc.ms_citas_db.model.entity;
 
+import cl.duoc.ms_citas_db.model.dto.CitaUpdateDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -36,4 +37,22 @@ public class Cita {
 
     @Column(length = 20)
     private String estado = "PENDIENTE";
+
+    public void actualizarCita(CitaUpdateDTO cita) {
+        if (cita.getPacienteId() != null) {
+            setPacienteId(cita.getPacienteId());
+        }
+
+        if (cita.getFecha() != null) {
+            setFecha(cita.getFecha());
+        }
+
+        if (cita.getHora() != null) {
+            setHora(cita.getHora());
+        }
+
+        if (cita.getEstado() != null) {
+            setEstado(cita.getEstado());
+        }
+    }
 }

@@ -1,6 +1,7 @@
 package cl.duoc.ms_citas_db.controller;
 
 import cl.duoc.ms_citas_db.model.dto.CitaDTO;
+import cl.duoc.ms_citas_db.model.dto.CitaUpdateDTO;
 import cl.duoc.ms_citas_db.model.entity.Cita;
 import cl.duoc.ms_citas_db.service.CitaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,17 @@ public class CitaController {
     @GetMapping("/{id}")
     public ResponseEntity<Cita> findById(Long id){
         Cita cita = citaService.findById(id);
+        return ResponseEntity.ok(cita);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteById(Long id){
+        citaService.eliminarCita(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping()
+    public ResponseEntity<CitaUpdateDTO> actualizarCita(@RequestBody CitaUpdateDTO cita) {
         return ResponseEntity.ok(cita);
     }
 }
