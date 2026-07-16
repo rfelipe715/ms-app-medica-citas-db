@@ -1,5 +1,4 @@
--- Crear tabla de citas
-CREATE TABLE IF NOT EXISTS citas (
+CREATE TABLE citas (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     id_paciente BIGINT NOT NULL,
     fecha VARCHAR(255) NOT NULL,
